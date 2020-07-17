@@ -1,6 +1,6 @@
 const db = require("./auth").db;
 const auth = require("./auth").auth;
-const googleAuth = require("./auth").googleAuth;
+const provider = require("./auth").provider;
 
 //auth().createUserWithEmailAndPassword("p.w.phelps28@gmail.com", "password123");
 
@@ -12,3 +12,13 @@ async function signIn(email, password) {
 }
 
 //signIn("p.w.phelps28@gmail.com", "password123");
+
+auth()
+	.signInWithPopup(provider)
+	.then((result) => {
+		console.log(result.user);
+	})
+	.catch((err) => {
+		console.log(err.code);
+		console.log(err.message);
+	});
