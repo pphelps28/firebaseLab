@@ -1,0 +1,20 @@
+{
+	"rules": {
+		"data": {
+			".read": "true",
+			".write": "root.child('users').child(auth.uid).child('Admin').val() === true"
+		},
+		"feed": {
+			".read": "data.parent().child('users').hasChild(auth.uid)",
+			".write": "data.parent().child('users').hasChild(auth.uid)"
+		},
+		"users": {
+			".read": "root.child('users').child(auth.uid).child('Admin').val() === true",
+			".write": "root.child('users').child(auth.uid).child('Admin').val() === true",
+			"$uid": {
+				".write": "$uid == auth.uid",
+				".read": "$uid == auth.uid"
+			}
+		}
+	}
+}
